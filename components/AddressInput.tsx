@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { ethers } from 'ethers';
 import { t } from '@lingui/macro';
@@ -31,6 +31,7 @@ const AddressInput = ({}: Props) => {
   const [inputAddress, setInputAddress] = useState('');
   const [showCopied, setShowCopied] = useState(false);
   const router = useRouter();
+  const isUserTyping = useRef(false);
 
   const { currentAddress, currentMarket } = useAaveData('');
 
@@ -91,14 +92,16 @@ const AddressInput = ({}: Props) => {
   }, [inputAddress]);
 
   useEffect(() => {
-    if (currentAddress && currentAddress !== inputAddress) {
+    // Only sync currentAddress to input if user is not actively typing
+    if (!isUserTyping.current && currentAddress && currentAddress !== inputAddress) {
       setInputAddress(currentAddress);
     }
-    if (inputAddress && !currentAddress) {
+    if (!currentAddress && inputAddress) {
       setInputAddress('');
+      isUserTyping.current = false;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentAddress, inputAddress]);
+  }, [currentAddress]);
 
   // derive an EVM address for external links (convert when possible)
   const explorerAddressForHref = (() => {
@@ -118,7 +121,13 @@ const AddressInput = ({}: Props) => {
       value={inputAddress || ''}
       size="lg"
       placeholder="0x...1234 or 12ab... (Polkadot SS58)"
-      onChange={(event) => setInputAddress(event.target.value?.trim())}
+      onChange={(event) => {
+        isUserTyping.current = true;
+        setInputAddress(event.target.value?.trim());
+      }}
+      onBlur={() => {
+        isUserTyping.current = false;
+      }}
       inputWrapperOrder={['label', 'error', 'input', 'description']}
       rightSection={
         <Center>
