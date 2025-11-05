@@ -13,8 +13,18 @@ export default async function handler(
     const data = await response.json();
 
     if (data.borrowers && data.borrowers.length > 0) {
-      // Return just the addresses array to minimize data transfer
-      const addresses = data.borrowers.map((borrower: any) => borrower[0]);
+      // Filter out positions with healthFactor <= 0 and return just the addresses
+      const addresses = data.borrowers
+        .filter((borrower: any) => {
+          const position = borrower[1];
+          return position.healthFactor > 0;
+        })
+        .map((borrower: any) => borrower[0]);
+
+      if (addresses.length === 0) {
+        return res.status(404).json({ error: 'No healthy borrowers found' });
+      }
+
       return res.status(200).json({ addresses });
     }
 
@@ -24,4 +34,3 @@ export default async function handler(
     return res.status(500).json({ error: 'Failed to fetch borrowers' });
   }
 }
-
