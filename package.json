@@ -22,7 +22,8 @@
     "extract": "lingui extract",
     "compile": "lingui compile",
     "sync": "lingui extract --overwrite && lingui compile",
-    "sync_and_purge": "lingui extract --overwrite --clean && lingui compile"
+    "sync_and_purge": "lingui extract --overwrite --clean && lingui compile",
+    "docker:build": "docker buildx build -t galacticcouncil/defisim:latest ."
   },
   "dependencies": {
     "@aave/contract-helpers": "1.30.3",
