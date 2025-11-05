@@ -106,21 +106,23 @@ const AddressInput = ({}: Props) => {
   // derive an EVM address for external links (convert when possible)
   const explorerAddressForHref = (() => {
     if (!inputAddress) return inputAddress;
+    let addr = inputAddress;
     if (isValidPolkadotAddress(inputAddress)) {
       try {
-        return polkadotToEthAddress(inputAddress);
+        addr = polkadotToEthAddress(inputAddress);
       } catch {
-        return inputAddress;
+        addr = inputAddress;
       }
     }
-    return inputAddress;
+    // Strip 0x prefix for explorer URL
+    return addr.toLowerCase().startsWith('0x') ? addr.slice(2) : addr;
   })();
 
   return (
     <TextInput
       value={inputAddress || ''}
       size="lg"
-      placeholder="0x...1234 or 12ab... (Polkadot SS58)"
+      placeholder="0x... or 12ab..."
       onChange={(event) => {
         isUserTyping.current = true;
         setInputAddress(event.target.value?.trim());
