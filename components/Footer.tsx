@@ -124,23 +124,6 @@ export default function FooterLinks() {
             </Trans>
           </Text>
         </div>
-        <Divider orientation="vertical" />
-
-        <Center>
-          <Text size="xs" c="dimmed" mt="lg" mx="lg" display="block">
-            <Trans>
-              Questions or comments? Please{" "}
-              <a
-                href="https://discord.gg/VF64xjhXEs"
-                target="_blank"
-                rel="noreferrer"
-                style={{ color: "#e9ecef" }}
-              >
-                join the Discord!
-              </a>
-            </Trans>
-          </Text>
-        </Center>
       </Container>
       <Container className={classes.afterFooter}>
         <Text color="dimmed" size="sm" mb={15}>
