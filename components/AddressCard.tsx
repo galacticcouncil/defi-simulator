@@ -81,7 +81,6 @@ const AddressCard = ({ }: Props) => {
 
   return (
     <div style={{ marginTop: "15px" }}>
-      <HealthFactorAddressSummary addressData={addressData} />
       <div style={{ zIndex: "6", backgroundColor: "#1A1B1E" }}>
         {isError && (
           <Trans>
@@ -1042,7 +1041,7 @@ const LiquidationScenario = ({
                       leftSection={avatar}
                     >
                       <LocalizedFiatDisplay valueUSD={liqAsset.priceInUSD} />
-                      {/** 
+                      {/**
                         {change !== 0 && currentAssetPrice !== 0 &&
                           <Text span size="xs" c="dimmed">
                             <Text span size="xs" color={change < 0 ? "red" : "dimmed"}>
