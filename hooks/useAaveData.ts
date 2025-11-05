@@ -553,7 +553,7 @@ export const getHealthFactorColor = (hf: number = 0) => {
 export const isStablecoinAsset = (asset: AssetDetails) => {
   const stablecoinSymbols = [
     // Major USD stablecoins used in Aave
-    "DAI", "USDC", "USDT", "TUSD", "USDP", "BUSD", "FRAX", "LUSD", "SUSD", "GUSD", "USDD", "DUSD",
+    "HOLLAR", "DAI", "USDC", "USDT", "TUSD", "USDP", "BUSD", "FRAX", "LUSD", "SUSD", "GUSD", "USDD", "DUSD",
     // Aave-specific stablecoins
     "GHO", "USD", "EUR", "MAI", "USDE", "SUSDE", "EUSDE",
     // Euro stablecoins used in Aave
