@@ -126,12 +126,12 @@ export function RandomAddressButton({ children }: RandomAddressButtonProps) {
   const loadRandomAddress = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('https://omniwatch.play.hydration.cloud/api/borrowers/by-health');
+      const response = await fetch('/api/random-address');
       const data = await response.json();
 
-      if (data.borrowers && data.borrowers.length > 0) {
-        const randomIndex = getRandomInt(0, data.borrowers.length);
-        const address = data.borrowers[randomIndex][0];
+      if (data.addresses && data.addresses.length > 0) {
+        const randomIndex = getRandomInt(0, data.addresses.length);
+        const address = data.addresses[randomIndex];
         router.push(`?address=${address}`);
       }
     } catch (error) {
