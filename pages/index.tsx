@@ -59,7 +59,6 @@ export default function HomePage() {
       <AddressInput />
       {currentAddress && <AddressCard />}
       {!currentAddress && <SplashSection />}
-      <ExperimentalAlert />
       <Footer />
     </Container>
   );
