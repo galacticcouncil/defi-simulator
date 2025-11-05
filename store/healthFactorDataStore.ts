@@ -10,7 +10,7 @@ interface HealthFactorStore {
 
 const defaultState: HealthFactorStore = {
   currentAddress: "",
-  currentMarket: "ETHEREUM_V3",
+  currentMarket: "HYDRATION",
   addressData: {},
 };
 

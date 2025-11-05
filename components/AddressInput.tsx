@@ -64,13 +64,6 @@ const AddressInput = ({ }: Props) => {
       inputWrapperOrder={["label", "error", "input", "description"]}
       rightSection={
         <Center>
-          <RandomAddressButton>
-            <Tooltip label={t`Use Random Address`} position="left" withArrow>
-              <ActionIcon bg="#25262b" pr={4} pl={4}>
-                <GiDiceSixFacesFive title={t`Use Random Address`} size={16} />
-              </ActionIcon>
-            </Tooltip>
-          </RandomAddressButton>
           <Tooltip
             label={
               showCopied

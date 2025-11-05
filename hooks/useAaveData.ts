@@ -174,213 +174,20 @@ export type AaveMarketDataType = {
 
 export const markets: AaveMarketDataType[] = [
   {
-    v3: false,
-    id: "ETHEREUM_V2",
-    title: "Ethereum v2",
-    chainId: ChainId.mainnet,
-    api: `https://eth-mainnet.alchemyapi.io/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`,
+    v3: true,
+    id: "HYDRATION",
+    title: "Hydration",
+    chainId: 222222,
+    api: `https://rpc.hydradx.cloud`,
     addresses: {
-      LENDING_POOL_ADDRESS_PROVIDER:
-        pools.AaveV2Ethereum.POOL_ADDRESSES_PROVIDER,
-      UI_POOL_DATA_PROVIDER: pools.AaveV2Ethereum.UI_POOL_DATA_PROVIDER,
-      UI_INCENTIVE_DATA_PROVIDER: pools.AaveV2Ethereum.UI_INCENTIVE_DATA_PROVIDER
+      LENDING_POOL_ADDRESS_PROVIDER: "0xf3Ba4D1b50f78301BDD7EAEa9B67822A15FCA691",
+      UI_POOL_DATA_PROVIDER: "0x112b087b60C1a166130d59266363C45F8aa99db0",
+      UI_INCENTIVE_DATA_PROVIDER: "0x23711ED88aFd7C9930a7337e5AacA3DAcC780FEc"
     },
-    explorer: "https://etherscan.io/address/{{ADDRESS}}",
-    explorerName: "Etherscan",
-    subgraphUrl: 'https://api.thegraph.com/subgraphs/name/aave/protocol-v2',
+    explorer: "https://app.hydration.net/borrow/dashboard?account={{ADDRESS}}",
+    explorerName: "Hydration",
+    subgraphUrl: '' // Placeholder URL,
 
-  },
-  {
-    v3: true,
-    id: "ETHEREUM_V3",
-    title: "Ethereum v3",
-    chainId: ChainId.mainnet,
-    api: `https://eth-mainnet.alchemyapi.io/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`,
-    addresses: {
-      LENDING_POOL_ADDRESS_PROVIDER:
-        pools.AaveV3Ethereum.POOL_ADDRESSES_PROVIDER,
-      UI_POOL_DATA_PROVIDER: "0x194324C9Af7f56E22F1614dD82E18621cb9238E7",
-      UI_INCENTIVE_DATA_PROVIDER: "0x5a40cDe2b76Da2beD545efB3ae15708eE56aAF9c"
-    },
-    explorer: "https://etherscan.io/address/{{ADDRESS}}",
-    explorerName: "Etherscan",
-    subgraphUrl: 'https://api.thegraph.com/subgraphs/name/aave/protocol-v3',
-  },
-  {
-    v3: true,
-    id: "ARBITRUM_V3",
-    title: "Arbitrum v3",
-    chainId: ChainId.arbitrum_one,
-    api: `https://arb-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`,
-    addresses: {
-      LENDING_POOL_ADDRESS_PROVIDER:
-        pools.AaveV3Arbitrum.POOL_ADDRESSES_PROVIDER,
-      UI_POOL_DATA_PROVIDER: "0xc0179321f0825c3e0F59Fe7Ca4E40557b97797a3", // pools.AaveV3Arbitrum.UI_POOL_DATA_PROVIDER,
-      UI_INCENTIVE_DATA_PROVIDER: "0xE92cd6164CE7DC68e740765BC1f2a091B6CBc3e4" // pools.AaveV3Arbitrum.UI_INCENTIVE_DATA_PROVIDER
-    },
-    explorer: "https://arbiscan.io/address/{{ADDRESS}}",
-    explorerName: "Arbiscan",
-    subgraphUrl: 'https://api.thegraph.com/subgraphs/name/aave/protocol-v3-arbitrum',
-  },
-  {
-    v3: true,
-    id: "OPTIMISM_V3",
-    title: "Optimism v3",
-    chainId: ChainId.optimism,
-    api: `https://opt-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`,
-    addresses: {
-      LENDING_POOL_ADDRESS_PROVIDER:
-        pools.AaveV3Optimism.POOL_ADDRESSES_PROVIDER,
-      UI_POOL_DATA_PROVIDER: "0x86b0521f92a554057e54B93098BA2A6Aaa2F4ACB", // pools.AaveV3Optimism.UI_POOL_DATA_PROVIDER,
-      UI_INCENTIVE_DATA_PROVIDER: "0xc0179321f0825c3e0F59Fe7Ca4E40557b97797a3" // pools.AaveV3Optimism.UI_INCENTIVE_DATA_PROVIDER
-    },
-    explorer: "https://optimistic.etherscan.io/address/{{ADDRESS}}",
-    explorerName: "Optimistic Etherscan",
-    subgraphUrl: 'https://api.thegraph.com/subgraphs/name/aave/protocol-v3-optimism',
-  },
-  {
-    v3: true,
-    id: "BASE_V3",
-    title: "Base v3",
-    chainId: ChainId.base,
-    api: `https://base-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`,
-    addresses: {
-      LENDING_POOL_ADDRESS_PROVIDER:
-        pools.AaveV3Base.POOL_ADDRESSES_PROVIDER,
-      UI_POOL_DATA_PROVIDER: "0xE92cd6164CE7DC68e740765BC1f2a091B6CBc3e4", // pools.AaveV3Base.UI_POOL_DATA_PROVIDER,
-      UI_INCENTIVE_DATA_PROVIDER: "0x5c5228aC8BC1528482514aF3e27E692495148717" // pools.AaveV3Base.UI_INCENTIVE_DATA_PROVIDER
-    },
-    explorer: "https://basescan.org/address/{{ADDRESS}}",
-    explorerName: "BaseScan",
-    subgraphUrl: "" // Not set up yet
-  },
-  {
-    v3: false,
-    id: "POLYGON_V2",
-    title: "Polygon v2",
-    chainId: ChainId.polygon,
-    api: `https://polygon-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`,
-    addresses: {
-      LENDING_POOL_ADDRESS_PROVIDER:
-        pools.AaveV2Polygon.POOL_ADDRESSES_PROVIDER,
-      UI_POOL_DATA_PROVIDER: pools.AaveV2Polygon.UI_POOL_DATA_PROVIDER,
-      UI_INCENTIVE_DATA_PROVIDER: pools.AaveV2Polygon.UI_INCENTIVE_DATA_PROVIDER
-    },
-    explorer: "https://polygonscan.com/address/{{ADDRESS}}",
-    explorerName: "PolygonScan",
-    subgraphUrl: 'https://api.thegraph.com/subgraphs/name/aave/aave-v2-matic',
-  },
-  {
-    v3: true,
-    id: "POLYGON_V3",
-    title: "Polygon v3",
-    chainId: ChainId.polygon,
-    api: `https://polygon-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`,
-    addresses: {
-      LENDING_POOL_ADDRESS_PROVIDER:
-        pools.AaveV3Polygon.POOL_ADDRESSES_PROVIDER,
-      UI_POOL_DATA_PROVIDER: "0xE92cd6164CE7DC68e740765BC1f2a091B6CBc3e4", // pools.AaveV3Polygon.UI_POOL_DATA_PROVIDER,
-      UI_INCENTIVE_DATA_PROVIDER: "0x5c5228aC8BC1528482514aF3e27E692495148717" // pools.AaveV3Polygon.UI_INCENTIVE_DATA_PROVIDER
-    },
-    explorer: "https://polygonscan.com/address/{{ADDRESS}}",
-    explorerName: "PolygonScan",
-    subgraphUrl: 'https://api.thegraph.com/subgraphs/name/aave/protocol-v3-polygon',
-  },
-  {
-    v3: false,
-    id: "AVALANCHE_V2",
-    title: "Avalanche v2",
-    chainId: ChainId.avalanche,
-    api: `https://avax-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`,
-    addresses: {
-      LENDING_POOL_ADDRESS_PROVIDER:
-        pools.AaveV2Avalanche.POOL_ADDRESSES_PROVIDER,
-      UI_POOL_DATA_PROVIDER: pools.AaveV2Avalanche.UI_POOL_DATA_PROVIDER,
-      UI_INCENTIVE_DATA_PROVIDER: pools.AaveV2Avalanche.UI_INCENTIVE_DATA_PROVIDER
-    },
-    explorer: "https://avascan.info/blockchain/all/address/{{ADDRESS}}",
-    explorerName: "AvaScan",
-    subgraphUrl: 'https://api.thegraph.com/subgraphs/name/aave/protocol-v2-avalanche',
-  },
-  {
-    v3: true,
-    id: "AVALANCHE_V3",
-    title: "Avalanche v3",
-    chainId: ChainId.avalanche,
-    api: `https://avax-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`,
-    addresses: {
-      LENDING_POOL_ADDRESS_PROVIDER:
-        pools.AaveV3Avalanche.POOL_ADDRESSES_PROVIDER,
-      UI_POOL_DATA_PROVIDER: "0x374a2592f0265b3bb802d75809e61b1b5BbD85B7", // pools.AaveV3Avalanche.UI_POOL_DATA_PROVIDER,
-      UI_INCENTIVE_DATA_PROVIDER: "0xC81CCebEA6A14bA007b96C0a1600D0bA0Df383a8" // pools.AaveV3Avalanche.UI_INCENTIVE_DATA_PROVIDER
-    },
-    explorer: "https://avascan.info/blockchain/all/address/{{ADDRESS}}",
-    explorerName: "AvaScan",
-    subgraphUrl: 'https://api.thegraph.com/subgraphs/name/aave/protocol-v3-avalanche',
-  },
-  /*
-  {
-    v3: true,
-    id: "METIS_V3",
-    title: "Metis v3",
-    chainId: ChainId.metis_andromeda,
-    api: `https://metis-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`,
-    addresses: {
-      LENDING_POOL_ADDRESS_PROVIDER: pools.AaveV3Metis.POOL_ADDRESSES_PROVIDER,
-      UI_POOL_DATA_PROVIDER: "0x5d4D4007A4c6336550DdAa2a7c0d5e7972eebd16", // pools.AaveV3Metis.UI_POOL_DATA_PROVIDER,
-      UI_INCENTIVE_DATA_PROVIDER: "0xE28E2c8d240dd5eBd0adcab86fbD79df7a052034", // pools.AaveV3Metis.UI_INCENTIVE_DATA_PROVIDER
-    },
-    explorer: "https://andromeda-explorer.metis.io/address/{{ADDRESS}}",
-    explorerName: "Metis Explorer",
-    subgraphUrl: 'https://andromeda.thegraph.metis.io/subgraphs/name/aave/protocol-v3-metis',
-  },
-  */
-  {
-    v3: true,
-    id: "GNOSIS_V3",
-    title: "Gnosis v3",
-    chainId: ChainId.xdai,
-    api: `https://gnosis-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`,
-    addresses: {
-      LENDING_POOL_ADDRESS_PROVIDER: pools.AaveV3Gnosis.POOL_ADDRESSES_PROVIDER,
-      UI_POOL_DATA_PROVIDER: pools.AaveV3Gnosis.UI_POOL_DATA_PROVIDER,
-      UI_INCENTIVE_DATA_PROVIDER: pools.AaveV3Gnosis.UI_INCENTIVE_DATA_PROVIDER
-    },
-    explorer: "https://gnosisscan.io/address/{{ADDRESS}}",
-    explorerName: "Gnosis Scan",
-    subgraphUrl: 'https://api.thegraph.com/subgraphs/name/aave/protocol-v3-gnosis',
-  },
-  /*
-  {
-    v3: true,
-    id: "SCROLL_V3",
-    title: "Scroll v3",
-    chainId: ChainId.scroll,
-    api: "https://scroll-mainnet.rpc.grove.city/v1/10ccb305",
-    addresses: {
-      LENDING_POOL_ADDRESS_PROVIDER: pools.AaveV3Scroll.POOL_ADDRESSES_PROVIDER,
-      UI_POOL_DATA_PROVIDER: pools.AaveV3Scroll.UI_POOL_DATA_PROVIDER,
-      UI_INCENTIVE_DATA_PROVIDER: pools.AaveV3Scroll.UI_INCENTIVE_DATA_PROVIDER
-    },
-    explorer: "https://scrollscan.com/address/{{ADDRESS}}",
-    explorerName: "Scroll Scan",
-    subgraphUrl: "",
-  },
-  */
-  {
-    v3: true,
-    id: "BNB_V3",
-    title: "BNB Chain v3",
-    chainId: ChainId.bnb,
-    api: `https://bnb-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`,
-    addresses: {
-      LENDING_POOL_ADDRESS_PROVIDER: pools.AaveV3BNB.POOL_ADDRESSES_PROVIDER,
-      UI_POOL_DATA_PROVIDER: "0xb12e82DF057BF16ecFa89D7D089dc7E5C1Dc057B", // pools.AaveV3BNB.UI_POOL_DATA_PROVIDER,
-      UI_INCENTIVE_DATA_PROVIDER: "0x86b0521f92a554057e54B93098BA2A6Aaa2F4ACB" // pools.AaveV3BNB.UI_INCENTIVE_DATA_PROVIDER
-    },
-    explorer: "https://bscscan.com/address/{{ADDRESS}}",
-    explorerName: "BSC Scan",
-    subgraphUrl: "",
   }
 ];
 
@@ -752,7 +559,7 @@ export const isStablecoinAsset = (asset: AssetDetails) => {
     // Euro stablecoins used in Aave
     "EURT", "EURS", "AGEUR", "PAR"
   ];
-  
+
   return !!stablecoinSymbols.find(symbol => asset.symbol?.toUpperCase().includes(symbol));
 };
 
@@ -1252,21 +1059,21 @@ export const getCalculatedLiquidationScenario = (
 
 export const getIconNameFromAssetSymbol = (assetSymbol: string) => {
   if (!assetSymbol) return "";
-  
+
   let iconName = assetSymbol.toLowerCase();
-  
+
   // Handle special PT (Principal Token) cases
   if (iconName.includes("pt-")) {
     // Extract the base token from PT tokens
     // e.g., "PT-eUSDE-14AUG2025" -> "eusde"
-    // e.g., "PT-sUSDE-25SEP2025" -> "susde" 
+    // e.g., "PT-sUSDE-25SEP2025" -> "susde"
     // e.g., "PT-USDe-31JUL2025" -> "usde"
     const ptMatch = iconName.match(/pt-(.+?)-/);
     if (ptMatch) {
       iconName = ptMatch[1];
     }
   }
-  
+
   // Handle Ethereal/Ethena tokens
   if (iconName.includes("ethereal") || iconName.includes("ethena")) {
     // Extract the base token from the long name
@@ -1277,14 +1084,14 @@ export const getIconNameFromAssetSymbol = (assetSymbol: string) => {
       iconName = etherealMatch[1];
     }
   }
-  
+
   // Apply standard transformations
   iconName = iconName
     .replace(".e", "")
     .replace(".b", "")
     .replace("m.", "")
     .replace("btcb", "btc");
-  
+
   return iconName;
 };
 
